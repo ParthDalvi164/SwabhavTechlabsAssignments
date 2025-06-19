@@ -6,7 +6,8 @@ namespace RandomNumber
         {
             int count = 0;
             string userResp = "yes";
-            Console.WriteLine("Random number generator game");
+            Console.WriteLine("RANDOM NUMBER GENERATOR GAME");
+            Console.WriteLine("----------------------------");
             
             
             while (userResp != "no")
@@ -29,17 +30,28 @@ namespace RandomNumber
 
             if (userGuess == randNumber)
             {
-                Console.WriteLine($"You won in {count} attempts");
-                Console.Write("Do you want ro play the game again?");
+                Console.WriteLine($"You won in {count} attempts!");
+                Console.Write("Do you want ro play the game again? (yes/no) -> ");
                 userResp = Console.ReadLine();
                 return;
             }
-            Console.WriteLine("You guessed it wrong");
+
+            if (userGuess > randNumber)
+            {
+                Console.WriteLine("Sorry too high!");
+            }
+
+            if (userGuess < randNumber)
+            {
+                Console.WriteLine("Sorry too low!");
+            }
+
             if(count >= 5)
             {
                 userResp = "no";
                 return;
             }
+            
             RandomNumberGenerator(randNumber, count, out userResp);
         }
     }
